@@ -92,12 +92,15 @@
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
-          <img src="${item.IconURL}" alt="${item.SkillName} Icon">
-          <h2>${item.SkillName}</h2>
-          <p><strong>Founder:</strong> ${item.Founder}</p>
+          <img src="${item.IconURL}" alt="${item.CousreName} Icon">
+          <h2>${item.CourseName}</h2>
+          <p><strong>Founder:</strong> ${item.Skills}</p>
           <p><strong>Category:</strong> ${item.Category}</p>
           <p>${item.Description}</p>
+          <p>${item.StartDate}</p>
+          <p>${item.Duration}</p>
           <a href="${item.CourseLink}" target="_blank">Go to Course</a>
+          <a href="${item.NoteLink}" target="_blank">Go to Notes</a>
         `;
         container.appendChild(card);
       });
