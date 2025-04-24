@@ -71,11 +71,10 @@
         card.className = 'card';
         card.innerHTML = `
           <h2>${entry.CourseName}</h2>
-          <p><strong>Founder:</strong> ${entry.Skills}</p>
-          <p><strong>Category:</strong> ${entry.Category}</p>
+          <p><strong>Skills:</strong> ${entry.Skills}</p>
           <p>${entry.Description}</p>
-          <p>${entry.StartDate}</p>
-          <p>${entry.Duration}</p>
+          <p><strong>Date:</strong>${entry.StartDate}</p>
+          <p><strong>Timeline:</strong>${entry.Duration}</p>
           <a href="${entry.CourseLink}" target="_blank">Go to Course</a>
           <a href="${entry.NoteLink}" target="_blank">Go to Notes</a>
         `;
