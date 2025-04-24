@@ -51,6 +51,12 @@
       text-decoration: none;
       border-radius: 5px;
     }
+    .empty-message {
+      text-align: center;
+      margin-top: 50px;
+      color: #888;
+      font-size: 1.1em;
+    }
   </style>
 </head>
 <body>
@@ -59,8 +65,9 @@
 
   <!-- Tabletop.js library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.4/tabletop.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.4/tabletop.min.js"></script>
   <script>
-    const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmwzomL6Hifwg5pZkrYgiNIEdSgostavoUCN4tsdtrYkHEaT4eMbMUMrGPZYppu1vSa9oUgPE9PVuC/pubhtml';
+    const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1fR5MSHp0bbMoIQt4FTKzopOgPNHkjR04kw44NVHgqf4/pubhtml';
 
     function init() {
       Tabletop.init({
@@ -72,20 +79,25 @@
 
     function showInfo(data) {
       const container = document.getElementById("cardContainer");
+      const emptyMessage = document.getElementById("emptyMessage");
       container.innerHTML = '';
+      if (data.length === 0) {
+        emptyMessage.style.display = 'block';
+        return;
+      } else {
+        emptyMessage.style.display = 'none';
+      }
+
       data.forEach((item) => {
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
-          <img src="${item.IconURL}" alt="${item.CousreName} Icon">
-          <h2>${item.CourseName}</h2>
-          <p><strong>Founder:</strong> ${item.Skills}</p>
+          <img src="${item.IconURL}" alt="${item.SkillName} Icon">
+          <h2>${item.SkillName}</h2>
+          <p><strong>Founder:</strong> ${item.Founder}</p>
           <p><strong>Category:</strong> ${item.Category}</p>
           <p>${item.Description}</p>
-          <p>${item.StartDate}</p>
-          <p>${item.Duration}</p>
           <a href="${item.CourseLink}" target="_blank">Go to Course</a>
-          <a href="${item.NoteLink}" target="_blank">Go to Notes</a>
         `;
         container.appendChild(card);
       });
